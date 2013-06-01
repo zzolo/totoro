@@ -4,6 +4,7 @@
   "main": "index.html",
   "dependencies": {
     "jquery": "~1.9.1",
+    "moment": "~2.0.0",
     "leaflet": "~0.5.1"
   },
   "ignore": [

@@ -1,4 +1,5 @@
 
+
 .center-container {
   width: 75%;
   margin: 1em auto;
@@ -12,4 +13,40 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.half-column {
+  width: 50%;
+  float: left
+}
+
+.center-text {
+  text-align: center;
+}
+
+.big-numbers .bus-line {
+  font-size: 15em;
+  width: 100%;
+}
+
+.big-numbers .bus-line-time {
+  font-size: 5em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+
+
+.bus-icons .bus-line-time {
+  font-size: 5em;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.bus-icons .bus-line {
+  font-size: 5em;
+  padding: 2em;
+  height: 150px;
+  background: transparent url('../img/noun_project_6628.svg') no-repeat center center;
+  background-size: 100% 100%;
 }

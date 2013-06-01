@@ -1,5 +1,8 @@
 
-
+.center-container {
+  width: 75%;
+  margin: 1em auto;
+}
 
 #bus-stop-map {
   position: absolute;

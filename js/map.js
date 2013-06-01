@@ -3,7 +3,7 @@
  */
 
 (function($, undefined) {
-  var busStop = '17984';
+  var busStop = '43275';
   var busStyle = {
     color: '#F5B800',
     opacity: 0.9,
@@ -15,7 +15,7 @@
   
   $(document).ready(function() {
     
-    $.getJSON('./js/stops.json', function(stops) {
+    $.getJSON('../js/stops.json', function(stops) {
       $.getJSON('http://svc.metrotransit.org/NexTrip/' + busStop + '?format=json&callback=?', function(currentStop) {
         
         //console.log(currentStop);

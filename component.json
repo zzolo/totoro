@@ -1,0 +1,14 @@
+{
+  "name": "bus-stops",
+  "version": "0.0.1",
+  "main": "index.html",
+  "dependencies": {
+    "jquery": "~1.9.1",
+    "leaflet": "~0.5.1"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

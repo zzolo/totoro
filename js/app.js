@@ -4,6 +4,14 @@
 
 (function($, undefined) {
   var busStop = '17984';
+  var busStyle = {
+    color: '#F5B800',
+    opacity: 0.9,
+    weight: '2',
+    fillColor: '#FFD65C',
+    fillOpacity: 0.7,
+    radius: 7
+  };
   
   $(document).ready(function() {
     
@@ -15,10 +23,10 @@
         
         // Create map
         var map = L.map('bus-stop-map')
-          .setView([stops[busStop].lat, stops[busStop].lon], 12);
+          .setView([stops[busStop].lat, stops[busStop].lon], 13);
         
-        // add an OpenStreetMap tile layer
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        // Add base layer
+        L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         
@@ -28,8 +36,9 @@
         // Add bus marker
         for (var bus in currentStop) {
           if (currentStop[bus].Actual == true) {
-            L.marker([currentStop[bus].VehicleLatitude, currentStop[bus].VehicleLongitude]).addTo(map)
-              .bindPopup('Bus ' + currentStop[bus].Route + currentStop[bus].Terminal + ' is arriving in approximately ' + currentStop[bus].DepartureText);
+            var circle = new L.CircleMarker([currentStop[bus].VehicleLatitude, currentStop[bus].VehicleLongitude], busStyle);
+            map.addLayer(circle);
+            circle.bindPopup('Bus ' + currentStop[bus].Route + currentStop[bus].Terminal + ' is arriving in approximately ' + currentStop[bus].DepartureText);
           }
         }
       

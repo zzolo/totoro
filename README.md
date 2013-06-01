@@ -1,4 +1,3 @@
-bus-stops
-=========
+# Bus Stops
 
 Bus stop visualizations

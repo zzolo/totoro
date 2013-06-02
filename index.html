@@ -119,7 +119,7 @@
         
         <div class="dots-bus dots-item">
           <div class="dots-bus-bus 
-            <% if (minutes < minuteGroups[minuteGroups.length - 1]) { %>dots-bus-due<% } %>"></div>
+            <% if (bus.DepartureText.toLowerCase() === 'due') { %>dots-bus-due<% } %>"></div>
         </div>
       </div>
     </script>

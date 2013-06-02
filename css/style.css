@@ -84,4 +84,16 @@
   text-shadow: 1px 1px 1px #000;
 }
 
+#simple-list {
+  padding-top: 3em;
+}
 
+#simple-list .simple-list-item-container {
+  width: 100%;
+  line-height: 1.5em;
+  background-color: #BDBDBD;
+  border: 3px solid #222222;
+  text-align: center;
+  font-size: 4em;
+  margin-bottom: .25em;
+}

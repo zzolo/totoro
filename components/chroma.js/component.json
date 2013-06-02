@@ -1,0 +1,8 @@
+{
+  "name": "chroma.js",
+  "version": "0.4.8",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gka/chroma.js.git"
+  }
+}

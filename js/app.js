@@ -4,13 +4,46 @@
 
 (function(jQuery, undefined) {
   // High level variables
-  var busStop = '17982';
+  var busStop = '16877'; //'17982';
   var $experimentContainer = $('.experiment-container');
   var stopPooler = mspStopPooler();
   var stopsData;
+  var colorRange = ['#21313E', '#EFEE69'];
+  //var colorRange = ['#FC8D59', '91BFDB'];
 
   // Experiment callbacks
   var experiments = {};
+  
+  // Simple list
+  experiments.simpleList = {};
+  experiments.simpleList.name = 'List';
+  experiments.simpleList.callback = function() {
+    var template = _.template($('#template-simple-list').html());
+    var minuteLimit = 20;
+    var colorScale = chroma.scale(colorRange);
+    colorScale.mode('hsi');
+  
+    // Update dom
+    $experimentContainer.html('<div id="simple-list" class="container"></div>');
+    $experimentContainer.show();
+  
+    // Pooler listener
+    stopPooler.on(function(currentStop) {
+      var now = moment();
+      $('#simple-list').html('');
+    
+      var filtered = _.filter(currentStop, function(b) { return b.Actual; });
+      _.each(filtered, function(bus) {
+        var percentage = 1 - (moment.duration(bus.time.diff(now)).minutes() / minuteLimit);
+        $('#simple-list').append(template({
+          bus: bus,
+          percentage: percentage,
+          color: colorScale(percentage).hex()
+        }));
+      });
+    });
+    stopPooler.start(busStop);
+  };
   
   // Bus icon
   experiments.busIcon = {};

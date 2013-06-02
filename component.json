@@ -5,10 +5,11 @@
   "dependencies": {
     "bootstrap": "~2.3.2",
     "jquery": "~1.8.3",
+    "chroma.js": "~0.4.8",
     "backbone": "~1.0.0",
     "leaflet": "~0.5.1",
-    "underscore": "~1.4.4",
-    "moment": "~2.0.0"
+    "moment": "~2.0.0",
+    "underscore": "~1.4.4"
   },
   "ignore": [
     "**/.*",

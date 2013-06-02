@@ -40,7 +40,7 @@
         }));
       });
       
-      $('.experiment-container').css('padding-top', '0');
+      app.verticallyAlign();
     });
     stopPooler.start(busStop);
   };

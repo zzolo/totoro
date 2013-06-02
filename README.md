@@ -12,3 +12,7 @@ Totoro comes from the [image](http://en.wikipedia.org/wiki/File:My_Neighbor_Toto
 
 1. Install `bower`
 1. Run: `bower install`
+
+## Attribution
+
+* <a href="http://thenounproject.com/noun/totoro/#icon-No3424" target="_blank">Totoro</a> designed by <a href="http://thenounproject.com/nithindavis" target="_blank">Nithin Davis Nanthikkara</a> from The Noun Project

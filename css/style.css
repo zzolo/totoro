@@ -9,6 +9,20 @@
   opacity: 1;
 }
 
+.totoro-icon {
+  background: transparent url('../img/noun_project_3424.svg') no-repeat center center;
+  background-size: 90% 90%;
+  text-indent: -9000px;
+  color: rgba(0, 0, 0, 0);
+}
+.totoro-icon.totoro-icon-invert {
+  background: transparent url('../img/noun_project_3424-invert.svg') no-repeat center center;
+  background-size: 90% 90%;
+}
+.totoro-icon-main {
+  height: 10em;
+}
+
 .main-container {
   margin-top: 40px;
 }

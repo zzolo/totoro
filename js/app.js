@@ -41,13 +41,15 @@
           color: colorScale(percentage).hex()
         }));
       });
+      
+      app.verticallyAlign();
     });
     stopPooler.start(busStop);
   };
   
   // Bus icon
   experiments.busIcon = {};
-  experiments.busIcon.name = 'Bus Icon';
+  experiments.busIcon.name = 'Icons';
   experiments.busIcon.callback = function() {
     var template = _.template($('#template-bus-icon').html());
     var minuteLimit = 20;
@@ -70,6 +72,8 @@
           percentage: percentage
         }));
       });
+      
+      app.verticallyAlign();
     });
     stopPooler.start(busStop);
   };
@@ -99,6 +103,8 @@
           percentage: percentage
         }));
       });
+      
+      app.verticallyAlign();
     });
     stopPooler.start(busStop);
   };
@@ -153,6 +159,8 @@
             busesMarkers.push(circle);
           }
         });
+        
+        $('.experiment-container').css('padding-top', '0');
       });
       stopPooler.start(busStop);
     };
@@ -197,6 +205,8 @@
         busStop = stop;
       }
       this.navigate(busStop, { replace: true });
+      stopPooler.stop();
+      this.verticallyAlign();
     },
   
     routeExperiment: function(experiment, stop) {
@@ -209,6 +219,21 @@
       
         experiments[experiment].callback();
       }
+    },
+    
+    verticallyAlign: function() {
+      $('.main-container').each(function() {
+        var $container = $(this);
+        var height = 0;
+        
+        $container.children().each(function() {
+          height += $(this).height();
+        });
+        
+        if (height < $container.height()) {
+          $container.css('padding-top', (($container.height() - height) / 2.65) + 'px');
+        }
+      });
     },
     
     handleGeolocateStop: function() {

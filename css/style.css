@@ -30,9 +30,9 @@
 }
 
 .main-container {
-  margin-top: 40px;
 }
 
+.home-container,
 .experiment-container {
   position: absolute;
   width: 100%;
@@ -43,6 +43,12 @@
   bottom: 0;
   display: none;
   background-color: #FFFFFF;
+  z-index: 10;
+}
+
+.home-container {
+  display: block;
+  z-index: 5;
 }
 
 #bus-stop-map {
@@ -52,6 +58,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+#bus-stop-map.leaflet-container .leaflet-control-zoom {
+  margin-top: 62px;
 }
 
 #simple-opacity .bus-line-container {

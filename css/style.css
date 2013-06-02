@@ -1,6 +1,14 @@
 /**
  *
  */
+.navbar-fixed-top {
+  opacity: 0.3;
+}
+.navbar-fixed-top.home,
+.navbar-fixed-top:hover {
+  opacity: 1;
+}
+
 .main-container {
   margin-top: 40px;
 }

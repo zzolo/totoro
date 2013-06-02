@@ -153,10 +153,12 @@
     },
   
     routeDefault: function() {
+      $('.navbar-fixed-top').addClass('home');
       $experimentContainer.hide();
     },
   
     routeExperiment: function(experiment) {
+      $('.navbar-fixed-top').removeClass('home');
       if (experiments[experiment] && _.isFunction(experiments[experiment].callback)) {
         experiments[experiment].callback();
       }

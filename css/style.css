@@ -132,3 +132,50 @@
   float: right;
   text-align: right;
 }
+
+#dots .dots-item-container {
+  font-size: 6em;
+  line-height: 1.25em;
+  width: 100%;
+  text-align: center;
+  margin-bottom: .25em;
+}
+
+#dots .dots-item {
+  display: inline-block;
+}
+
+#dots .dots-item .dots-item-dots {
+  border: 1px solid #222222;
+  border-radius: 1em;
+  height: .6em;
+  width: .6em;
+}
+
+#dots .dots-item .dots-item-dots.active-bus {
+  background-color: #409B89;
+}
+
+#dots .dots-item .dots-item-text {
+  font-size: .3em;
+  margin-top: -2em;
+  color: #878787;
+}
+
+#dots .dots-item .dots-bus-bus {
+  margin-top: .5em;
+  background-color: #878787;
+  border: 1px solid #222222;
+  border-radius: 5px;
+  height: .85em;
+  width: .85em;
+}
+
+#dots .dots-item .dots-bus-bus.dots-bus-due {
+  background-color: #40529C;
+}
+
+
+#dots .dots-bus-label {
+  width: 2em;
+}

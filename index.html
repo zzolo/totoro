@@ -36,7 +36,7 @@
   
     <div class="home-container main-container">
       <div class="container">
-        <h1>Totoro</h1>
+        <h1><span class="muted">My Bus Stop</span> Totoro</h1>
         <div class="row-fluid">
           <div class="span8"> 
           <p>The <strong>bus stop</strong> is an important facet in our community.  Thousands of people visit one each day in the Twin Cities metro area.  This is a convenient place to not only get information about where the bus is, but also information on the community around the bus stop.</p>
@@ -91,6 +91,36 @@
       <div class="color-list-item-container" style="background-color: <%= color %>">
         <div class="item-time"><%= bus.DepartureText.toLowerCase() %></div>
         <div class="item-route"><%= bus.Route %><%= bus.Terminal %></div>
+      </div>
+    </script>
+    
+    <script id="template-dots" type="text/template">
+      <div class="dots-item-container">
+        
+        <div class="dots-bus-label dots-item">
+          <%= bus.Route + bus.Terminal %>
+              <div class="dots-item-text">
+                <%= bus.DepartureText %>
+              </div>
+        </div>
+        
+        <% _.each(minuteGroups, function(group, i) { %>
+          <div class="dots-item dots-minute">
+            <div class="dots-item-dots 
+                <% var next = (minuteGroups[i + 1]) ?minuteGroups[i + 1] : 0; 
+                if (minutes <= group && minutes > next) { %>active-bus<% } %>
+            ">
+              
+            </div>
+            <% if (minutes <= group && minutes > next) { %>
+            <% } %>
+          </div>
+        <% }) %>
+        
+        <div class="dots-bus dots-item">
+          <div class="dots-bus-bus 
+            <% if (minutes < minuteGroups[minuteGroups.length - 1]) { %>dots-bus-due<% } %>"></div>
+        </div>
       </div>
     </script>
     

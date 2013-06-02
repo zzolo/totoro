@@ -13,7 +13,39 @@
   // Experiment callbacks
   var experiments = {};
   
-  // Simple list
+  // Dots
+  experiments.dots = {};
+  experiments.dots.name = 'Dots';
+  experiments.dots.callback = function() {
+    var template = _.template($('#template-dots').html());
+    var minuteLimit = 20;
+    var minuteGroups = [20, 18, 16, 14, 12, 10, 8, 6, 4, 2];
+  
+    // Update dom
+    $experimentContainer.html('<div id="dots"></div>');
+    $experimentContainer.show();
+  
+    // Pooler listener
+    stopPooler.on(function(currentStop) {
+      var now = moment();
+      $('#dots').html('');
+    
+      var filtered = _.filter(currentStop, function(b) { return b.Actual; });
+      _.each(filtered, function(bus) {
+        $('#dots').append(template({
+          bus: bus,
+          now: now,
+          minutes: moment.duration(bus.time.diff(now)).minutes(),
+          minuteGroups: minuteGroups
+        }));
+      });
+      
+      $('.experiment-container').css('padding-top', '0');
+    });
+    stopPooler.start(busStop);
+  };
+  
+  // Color list
   experiments.colorList = {};
   experiments.colorList.name = 'Colors';
   experiments.colorList.callback = function() {

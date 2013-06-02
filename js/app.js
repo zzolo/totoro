@@ -7,6 +7,7 @@
   var busStop = '17982';
   var $experimentContainer = $('.experiment-container');
   var stopPooler = mspStopPooler();
+  var stopsData;
 
   // Experiment callbacks
   var experiments = {};
@@ -93,9 +94,9 @@
     L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-  
-    // Get stop data
-    $.getJSON('./js/stops.json', function(stops) {
+    
+    // Handle updating
+    var updater = function(stops) {
       // Start pooling API
       stopPooler.on(function(currentStop) {
         // Set map
@@ -121,7 +122,18 @@
         });
       });
       stopPooler.start(busStop);
-    });
+    };
+    
+    // Get stop data
+    if (stopsData) {
+      updater(stopsData);
+    }
+    else {
+      $.getJSON('./js/stops.json', function(stops) {
+        stopsData = stops;
+        updater(stopsData);
+      });
+    }
   };
 
   // Handle routing

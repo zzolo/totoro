@@ -47,14 +47,14 @@
     <script id="template-simple-opacity" type="text/template">
       <div class="bus-line-container" style="width: <%= 100 / items %>%; opacity: <%= (percentage * 0.6) + 0.4 %>;">
         <div class="bus-line center-text"><%= bus.Route %><%= bus.Terminal %></div>
-        <div class="bus-line-time center-text"><%= bus.DepartureText %></div>
+        <div class="bus-line-time center-text"><%= bus.DepartureText.toLowerCase() %></div>
       </div>
     </script>
     
     <script id="template-bus-icon" type="text/template">
       <div class="bus-icon-container" style="width: <%= 100 / items %>%;">
         <div class="bus-line center-text" style="background-size: <%= (percentage * 50) + 50 %>% <%= (percentage * 50) + 50 %>%;"><%= bus.Route %><%= bus.Terminal %></div>
-        <div class="bus-line-time center-text"><%= bus.DepartureText %></div>
+        <div class="bus-line-time center-text"><%= bus.DepartureText.toLowerCase() %></div>
       </div>
     </script>
     

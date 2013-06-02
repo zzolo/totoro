@@ -43,7 +43,7 @@
   font-size: 3em;
   float: left;
   line-height: 1.25em;
-  padding-top: 1em;
+  padding-top: 2em;
   padding-bottom: 1em;
   text-align: center;
 }
@@ -58,7 +58,7 @@
   display:box;
   box-pack:center;
   box-align:center;
-  color: #999999;
+  color: #ABABAB;
   text-shadow: 1px 1px 1px #000;
 }
 

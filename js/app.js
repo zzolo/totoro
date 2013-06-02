@@ -8,16 +8,51 @@
   var $experimentContainer = $('.experiment-container');
   var stopPooler = mspStopPooler();
   var stopsData;
-  var colorRange = ['#21313E', '#EFEE69'];
   //var colorRange = ['#FC8D59', '91BFDB'];
 
   // Experiment callbacks
   var experiments = {};
   
   // Simple list
+  experiments.colorList = {};
+  experiments.colorList.name = 'Colors';
+  experiments.colorList.callback = function() {
+    var colorRange = ['#EFEE69', '#21313E'];
+    var colorRange = ['#FF0040', '#40FF00'];
+    var template = _.template($('#template-color-list').html());
+    var minuteLimit = 20;
+    var colorScale = chroma.scale(colorRange);
+    colorScale.mode('lab');
+  
+    // Update dom
+    $experimentContainer.html('<div id="color-list"></div>');
+    $experimentContainer.show();
+  
+    // Pooler listener
+    stopPooler.on(function(currentStop) {
+      var now = moment();
+      $('#color-list').html('');
+    
+      var filtered = _.filter(currentStop, function(b) { return b.Actual; });
+      _.each(filtered, function(bus) {
+        var percentage = 1 - (moment.duration(bus.time.diff(now)).minutes() / minuteLimit);
+        $('#color-list').append(template({
+          bus: bus,
+          percentage: percentage,
+          color: colorScale(percentage).hex()
+        }));
+      });
+      
+      $('.experiment-container').css('padding-top', '0');
+    });
+    stopPooler.start(busStop);
+  };
+  
+  // Simple list
   experiments.simpleList = {};
   experiments.simpleList.name = 'List';
   experiments.simpleList.callback = function() {
+    var colorRange = ['#21313E', '#EFEE69'];
     var template = _.template($('#template-simple-list').html());
     var minuteLimit = 20;
     var colorScale = chroma.scale(colorRange);

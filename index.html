@@ -76,7 +76,7 @@
     
     <script id="template-bus-icon" type="text/template">
       <div class="bus-icon-container" style="width: <%= 100 / items %>%;">
-        <div class="bus-line center-text" style="background-size: <%= (percentage * 50) + 50 %>% <%= (percentage * 50) + 50 %>%;"><%= bus.Route %><%= bus.Terminal %></div>
+        <div class="bus-line center-text" style="background-size: <%= (percentage * 50) + 50 %>% <%= (percentage * 50) + 50 %>%; font-size: <%= (percentage * 60) + 40 %>%"><%= bus.Route %><%= bus.Terminal %></div>
         <div class="bus-line-time center-text"><%= bus.DepartureText.toLowerCase() %></div>
       </div>
     </script>
@@ -84,6 +84,13 @@
     <script id="template-simple-list" type="text/template">
       <div class="simple-list-item-container center-text" style="background-color: <%= color %>">
         <span class="" style=""><%= bus.Route %><%= bus.Terminal %> arrives in <%= bus.DepartureText.toLowerCase() %></span>
+      </div>
+    </script>
+    
+    <script id="template-color-list" type="text/template">
+      <div class="color-list-item-container" style="background-color: <%= color %>">
+        <div class="item-time"><%= bus.DepartureText.toLowerCase() %></div>
+        <div class="item-route"><%= bus.Route %><%= bus.Terminal %></div>
       </div>
     </script>
     

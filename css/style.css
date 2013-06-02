@@ -1,13 +1,6 @@
 /**
  *
  */
-.navbar-fixed-top {
-  opacity: 0.3;
-}
-.navbar-fixed-top.home,
-.navbar-fixed-top:hover {
-  opacity: 1;
-}
 
 .totoro-icon {
   background: transparent url('../img/noun_project_3424.svg') no-repeat center center;
@@ -21,6 +14,19 @@
 }
 .totoro-icon-main {
   height: 10em;
+}
+
+.small-nav {
+  z-index: 1000;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  opacity: 0.8;
+}
+.small-nav .totoro-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
 }
 
 .main-container {

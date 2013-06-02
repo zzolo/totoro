@@ -176,7 +176,7 @@
       
       // Make links
       _.each(experiments, function(ex, i) {
-        $('.navbar .nav .dropdown-menu').append('<li><a href="#experiment/' + i + '">' + ex.name + '</a></li>')
+        $('.small-nav .dropdown-menu').prepend('<li><a href="#experiment/' + i + '">' + ex.name + '</a></li>')
       });
       
       this.handleGeolocateStop();

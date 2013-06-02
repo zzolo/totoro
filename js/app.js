@@ -4,7 +4,7 @@
 
 (function(jQuery, undefined) {
   // High level variables
-  var busStop = '16877'; //'17982';
+  var busStop = '17982';
   var $experimentContainer = $('.experiment-container');
   var stopPooler = mspStopPooler();
   var stopsData;
@@ -178,24 +178,83 @@
       _.each(experiments, function(ex, i) {
         $('.navbar .nav .dropdown-menu').append('<li><a href="#experiment/' + i + '">' + ex.name + '</a></li>')
       });
+      
+      this.handleGeolocateStop();
     },
   
     routes: {
       'experiment/:experiment': 'routeExperiment',
+      'experiment/:experiment/:stop': 'routeExperiment',
+      ':stop': 'routeDefault',
       '*default': 'routeDefault'
     },
   
-    routeDefault: function() {
+    routeDefault: function(stop) {
       $('.navbar-fixed-top').addClass('home');
       $experimentContainer.hide();
+      
+      if (stop) {
+        busStop = stop;
+      }
+      this.navigate(busStop, { replace: true });
     },
   
-    routeExperiment: function(experiment) {
+    routeExperiment: function(experiment, stop) {
       $('.navbar-fixed-top').removeClass('home');
       if (experiments[experiment] && _.isFunction(experiments[experiment].callback)) {
+        if (stop) {
+          busStop = stop;
+        }
+        this.navigate('experiment/' + experiment + '/' + busStop, { replace: true });
+      
         experiments[experiment].callback();
       }
-    }
+    },
+    
+    handleGeolocateStop: function() {
+      var thisRouter = this;
+      
+      $('body').on('click', '.geolocate-stop', function(e) {
+        e.preventDefault();
+        
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            if (_.isObject(position)) {
+              thisRouter.geolocateStop.apply(thisRouter, [position]);
+            }
+          }, function() {
+            // Handle error
+          });
+        }
+      });
+    },
+    
+    geolocateStop: function(position) {
+      var thisRouter = this;
+      
+      this.getStopsData(function(stops) {
+        // Not really accruate
+        var min = _.min(stops, function(s) {
+          return Math.sqrt(Math.pow((s.lat - position.coords.latitude), 2) + Math.pow((s.lon - position.coords.longitude), 2));
+        });
+        
+        busStop = min.id;
+        stopPooler.busStop = busStop;
+        thisRouter.navigate(busStop, { replace: true });
+      });
+    },
+    
+    getStopsData: function(callback) {
+      if (stopsData) {
+        callback(stopsData);
+      }
+      else {
+        $.getJSON('./js/stops.json', function(stops) {
+          stopsData = stops;
+          callback(stopsData);
+        });
+      }
+    }   
   });
   
   var app = new Workspace();

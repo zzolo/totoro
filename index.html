@@ -91,7 +91,7 @@
     <script id="template-color-list" type="text/template">
       <div class="color-list-item-container" style="background-color: <%= color %>">
         <div class="item-time"><%= bus.DepartureText.toLowerCase() %></div>
-        <div class="item-route"><%= bus.Route %><%= bus.Terminal %></div>
+        <div class="item-route"><%= bus.Route %><%= bus.Terminal %> <%= bus.RouteDirection[0] %>B</div>
       </div>
     </script>
     

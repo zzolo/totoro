@@ -8,7 +8,7 @@ Totoro comes from the [image](http://en.wikipedia.org/wiki/File:My_Neighbor_Toto
 
 * Stop data from [here](https://github.com/r-barnes/mspbus/blob/master/data/stops.txt) via MetroTransit GTFS feed.
 
-## Install
+## Dependencies
 
 1. Install `bower`
 1. Run: `bower install`
